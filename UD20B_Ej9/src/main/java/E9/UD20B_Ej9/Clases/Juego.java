@@ -49,6 +49,7 @@ public class Juego extends JFrame {
 				}else {
 					botones[i]=new JButton(""+letras[i]);
 					panel.add(botones[i]);
+					
 				}
 			}
 		}
