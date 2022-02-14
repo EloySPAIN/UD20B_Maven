@@ -15,22 +15,11 @@ public class Juego extends JFrame {
 	private static final long serialVersionUID = 1L;
 	//Creamos las variables
 	private JPanel panel;
-	JButton b1 = new JButton("a");
-	JButton b2 = new JButton("a");
-	JButton b3 = new JButton("a");
-	JButton b4 = new JButton("a");
-	JButton b5 = new JButton("a");
-	JButton b6 = new JButton("a");
-	JButton b7 = new JButton("a");
-	JButton b8 = new JButton("a");
-	JButton b9 = new JButton("a");
-	JButton b10 = new JButton("a");
-	JButton b11 = new JButton("a");
-	JButton b12 = new JButton("a");
-	JButton b13 = new JButton("a");
-	JButton b14 = new JButton("a");
-	JButton b15 = new JButton("a");
-	JButton b16 = new JButton("a");
+	private int num=16;
+	private JButton[] botones = new JButton[16];
+	private char[] letras = {'A','A','B','B','C','C','D','D','E','E','F','F','G','G','H','H'};
+
+	
 	
 	public Juego() {
 		//Creamos el panel
@@ -48,25 +37,22 @@ public class Juego extends JFrame {
 		panel.setBackground(Color.blue);
 		//Creamos el grid
 		panel.setLayout(new GridLayout (4,4, 2,2));
-
-		//Lo añadimos al panel
-		panel.add(b1);
-		b1.setBackground(Color.getHSBColor(187, 80, 60));
-		panel.add(b2);
-		panel.add(b3);
-		panel.add(b4);
-		panel.add(b5);
-		panel.add(b6);
-		panel.add(b7);
-		panel.add(b8);
-		panel.add(b9);
-		panel.add(b10);
-		panel.add(b11);
-		panel.add(b12);
-		panel.add(b13);
-		panel.add(b14);
-		panel.add(b15);
-		panel.add(b16);
+		int num;
+		char hola;
+		
+		for(int i=0;i<16;i++) {
+			num=(int)Math.random()*16;
+			hola=(char)num;
+			for(int j=0;j<16;j++) {
+				if(letras[j] == botones[i].getText().charAt(0)) {
+					
+				}else {
+					botones[i]=new JButton(""+letras[i]);
+					panel.add(botones[i]);
+				}
+			}
+		}
+		
 
 
 	}
