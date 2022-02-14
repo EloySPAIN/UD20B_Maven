@@ -15,9 +15,9 @@ public class Juego extends JFrame {
 	private static final long serialVersionUID = 1L;
 	//Creamos las variables
 	private JPanel panel;
-	private int num=16;
+
 	private JButton[] botones = new JButton[16];
-	private char[] letras = {'A','A','B','B','C','C','D','D','E','E','F','F','G','G','H','H'};
+
 
 	
 	
@@ -38,22 +38,24 @@ public class Juego extends JFrame {
 		//Creamos el grid
 		panel.setLayout(new GridLayout (4,4, 2,2));
 		int num;
-		char hola;
-		
-		for(int i=0;i<16;i++) {
-			num=(int)Math.random()*16;
-			hola=(char)num;
-			for(int j=0;j<16;j++) {
-				if(letras[j] == botones[i].getText().charAt(0)) {
-					
-				}else {
-					botones[i]=new JButton(""+letras[i]);
+		String hola;
+		int cont = 0;
+		do {
+			for(int i=0;i<16;i++) {
+				num=(int)(Math.random()*16);
+				hola=String.valueOf(num);
+				botones[i]=new JButton(""+num);
+				if(!hola.equals(botones[i])) {
+					cont--;
+					botones[i]=new JButton(""+num);
 					panel.add(botones[i]);
+				}else {
+					cont++;
 					
 				}
+				System.out.println(num);
 			}
-		}
-		
+		} while (cont == 8);
 
 
 	}
