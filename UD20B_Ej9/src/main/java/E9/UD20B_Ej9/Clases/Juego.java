@@ -38,26 +38,7 @@ public class Juego extends JFrame {
         panel.setBackground(Color.blue);
         //Creamos el grid
         panel.setLayout(new GridLayout (4,4, 2,2));
-        int num;
-        String hola;
-        int cont = 0;
-        
-        ArrayList < Integer > aNum = new ArrayList<Integer>();
-
-        AleatorioNoRepetido(16, aNum);
-        
-            for(int i=0;i<16;i++) {
-                hola=String.valueOf(aNum.get(i));
-                botones[i]=new JButton(""+letras[aNum.get(i)]);
-                if(!hola.equals(botones[i])) {
-                    cont--;
-                    botones[i]=new JButton(""+letras[aNum.get(i)]);
-                    panel.add(botones[i]);
-                }else {
-                    cont++;
-                    
-                }
-            }
+        NumRand();
 
 
     }
@@ -92,5 +73,23 @@ public class Juego extends JFrame {
         return aNum;
     	
     }
+    
+    public void NumRand() {
+    	int num;
+        String numString;
+        int cont = 0;
+    	ArrayList < Integer > aNum = new ArrayList<Integer>();
+
+        AleatorioNoRepetido(16, aNum);
+        
+            for(int i=0;i<16;i++) {
+            	numString=String.valueOf(aNum.get(i));
+                botones[i]=new JButton(""+letras[aNum.get(i)]);
+                panel.add(botones[i]);
+                
+            }
+    }
+    
+    
     
 }
