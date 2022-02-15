@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -20,8 +21,8 @@ public class Juego extends JFrame {
     private ArrayList < Integer > aNum = new ArrayList<Integer>();
     private ArrayList<ImageIcon> imagenes = new ArrayList<ImageIcon>();
     private ArrayList<ImageIcon> imgnada = new ArrayList<ImageIcon>();
-    private ArrayList<JButton> guardar = new ArrayList<JButton>();
-    private int contGlobal = 0;
+    private ArrayList<Icon> aGirados = new ArrayList<Icon>();
+    private int primeravez = 0;
     //Creacion de imagenes
     Image imgNada = new ImageIcon("imagenes/nada.png").getImage();
     ImageIcon imgNada_2 = new ImageIcon(imgNada.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
@@ -83,8 +84,10 @@ public class Juego extends JFrame {
         }
     	imagenes.add(img1_2);imagenes.add(img2_2);imagenes.add(img3_2);imagenes.add(img4_2);
     	imagenes.add(img5_2);imagenes.add(img6_2);imagenes.add(img7_2);imagenes.add(img8_2);
-    	imagenes.add(img9_2);imagenes.add(img10_2);imagenes.add(img11_2);imagenes.add(img12_2);
-    	imagenes.add(img13_2);imagenes.add(img14_2);imagenes.add(img15_2);imagenes.add(img16_2);
+    	imagenes.add(img1_2);imagenes.add(img2_2);imagenes.add(img3_2);imagenes.add(img4_2);
+    	imagenes.add(img5_2);imagenes.add(img6_2);imagenes.add(img7_2);imagenes.add(img8_2);
+    	/**imagenes.add(img9_2);imagenes.add(img10_2);imagenes.add(img11_2);imagenes.add(img12_2);
+    	imagenes.add(img13_2);imagenes.add(img14_2);imagenes.add(img15_2);imagenes.add(img16_2);**/
         //Creamos el panel
         setTitle("Ejercicio9");
         setBounds(500, 10, 1000, 1000);
@@ -115,82 +118,85 @@ public class Juego extends JFrame {
     public class Resultado implements MouseListener {
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			
+			int comp = 0;
+			
 			for(int i=0;i<16;i++) {
-				if(contGlobal==2) {
-					if(e.getSource()!=botones[i].getIcon()) {
-						botones[i].setIcon(imgnada.get(aNum.get(i)));
-						contGlobal=0;
+					if(e.getSource()==botones[i]) {
+						botones[i].setIcon(imagenes.get(aNum.get(i)));
 					}
-				}else if(contGlobal!=2) {
-					if(e.getSource()==botones[0]) {
-						botones[0].setIcon(imagenes.get(aNum.get(0)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[1]) {
-						botones[1].setIcon(imagenes.get(aNum.get(1)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[2]) {
-						botones[2].setIcon(imagenes.get(aNum.get(2)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[3]) {
-						botones[3].setIcon(imagenes.get(aNum.get(3)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[4]) {
-						botones[4].setIcon(imagenes.get(aNum.get(4)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[5]) {
-						botones[5].setIcon(imagenes.get(aNum.get(5)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[6]) {
-						botones[6].setIcon(imagenes.get(aNum.get(6)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[7]) {
-						botones[7].setIcon(imagenes.get(aNum.get(7)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[8]) {
-						botones[8].setIcon(imagenes.get(aNum.get(8)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[9]) {
-						botones[9].setIcon(imagenes.get(aNum.get(9)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[10]) {
-						botones[10].setIcon(imagenes.get(aNum.get(10)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[11]) {
-						botones[11].setIcon(imagenes.get(aNum.get(11)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[12]) {
-						botones[12].setIcon(imagenes.get(aNum.get(12)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[13]) {
-						botones[13].setIcon(imagenes.get(aNum.get(13)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[14]) {
-						botones[14].setIcon(imagenes.get(aNum.get(14)));
-						contGlobal++;
-					}
-					if(e.getSource()==botones[15]) {
-						botones[15].setIcon(imagenes.get(aNum.get(15)));
-						contGlobal++;
+					
+					
+					
+			}
+				
+			System.out.println(detectarParejas());
+			
+			
+			System.out.println(aGirados.toString()); 
+			
+			if((girados()) && (!detectarParejas())) {				
+				
+				cubrir();
+				
+			}
+
+		}
+		
+		
+		public void cubrir() {
+			
+			for(int i=0; i<16; i++) {
+				if(!aGirados.contains(botones[i].getIcon())) {
+					botones[i].setIcon(imgNada_2);
+				}
+			}
+		}
+			
+	
+		
+		public boolean girados() {
+			
+			int cont = 0;
+			
+			for(int i=0; i<16; i++) {			
+				if((!botones[i].getIcon().equals(imgNada_2)) && (!aGirados.contains(botones[i].getIcon()))){					
+					cont++;					
+				}				
+			}	
+			
+			if(cont>=2) {
+				return true;
+			}
+			
+			return false;
+			
+		}
+		
+		public boolean detectarParejas() {
+			
+			boolean res = false;
+			
+			for(int i=0; i<16; i++) {
+				for(int j=0; j<16; j++) {
+					if ((botones[i].getIcon().equals(botones[j].getIcon())) && (!botones[i].getIcon().equals(imgNada_2)) && (i != j) && (primeravez == 0)) {
+						aGirados.add(botones[i].getIcon());
+						aGirados.add(botones[j].getIcon());
+						primeravez = 1;
+						res = true;
+					}else if((botones[i].getIcon().equals(botones[j].getIcon())) && (!botones[i].getIcon().equals(imgNada_2)) && (i != j) && ((!aGirados.contains(botones[i].getIcon()) || (!aGirados.contains(botones[j].getIcon()))))) {
+						aGirados.add(botones[i].getIcon());
+						aGirados.add(botones[j].getIcon());
+						res = true;
 					}
 				}
 			}
-					
+			
+			return res;
+			
 		}
-
+		
+		
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
@@ -211,7 +217,8 @@ public class Juego extends JFrame {
 			
 		}
 		
-	}
+    }
+
     
     
     
