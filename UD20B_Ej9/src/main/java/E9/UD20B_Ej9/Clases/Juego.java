@@ -1,11 +1,10 @@
 package E9.UD20B_Ej9.Clases;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 /**
@@ -17,11 +16,14 @@ public class Juego extends JFrame {
     private static final long serialVersionUID = 1L;
     //Creamos las variables
     private JPanel panel;
-    //private int num=16;
     private JButton[] botones = new JButton[16];
-    
+    private ArrayList < Integer > aNum = new ArrayList<Integer>();
     private ArrayList<ImageIcon> imagenes = new ArrayList<ImageIcon>();
+    private ArrayList<ImageIcon> imgnada = new ArrayList<ImageIcon>();
     //Creacion de imagenes
+    Image imgNada = new ImageIcon("imagenes/nada.png").getImage();
+    ImageIcon imgNada_2 = new ImageIcon(imgNada.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
     Image img1 = new ImageIcon("imagenes/Java.jpg").getImage();
     ImageIcon img1_2 = new ImageIcon(img1.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
     
@@ -74,6 +76,9 @@ public class Juego extends JFrame {
     
     public Juego() {
     	//Añadimos las imagenes que hemos agregado al programa al array de imagenes
+    	for(int i=0;i<16;i++) {
+        	imgnada.add(imgNada_2);  
+        }
     	imagenes.add(img1_2);imagenes.add(img2_2);imagenes.add(img3_2);imagenes.add(img4_2);
     	imagenes.add(img5_2);imagenes.add(img6_2);imagenes.add(img7_2);imagenes.add(img8_2);
     	imagenes.add(img9_2);imagenes.add(img10_2);imagenes.add(img11_2);imagenes.add(img12_2);
@@ -83,6 +88,7 @@ public class Juego extends JFrame {
         setBounds(500, 10, 1000, 1000);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        setResizable(false);
         
         //Creamos el panel, el texto y el label
         panel = new JPanel();
@@ -99,12 +105,33 @@ public class Juego extends JFrame {
 
     }
     //Creamos el evento del boton
-    public class Resultado implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
+    public class Resultado implements MouseListener {
+		@Override
+		public void mouseClicked(MouseEvent e) {
 
-        }
-        
-    }
+		}
+
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
     
     
     
@@ -135,16 +162,19 @@ public class Juego extends JFrame {
     public void NumRand() {
     	int num;
         String numString;
-        int cont = 0;
-    	ArrayList < Integer > aNum = new ArrayList<Integer>();
+    	//ArrayList < Integer > aNum = new ArrayList<Integer>();
 
         AleatorioNoRepetido(16, aNum);
         
             for(int i=0;i<16;i++) {
             	numString=String.valueOf(aNum.get(i));
-                botones[i]=new JButton(imagenes.get(aNum.get(i)));
+            	botones[i]=new JButton(imgnada.get(aNum.get(i)));
                 panel.add(botones[i]);
                 
+            }
+            
+            for(int i=0;i<16;i++) {
+            	//botones[i].setIcon(imagenes.get(aNum.get(i)));  
             }
     }
     
