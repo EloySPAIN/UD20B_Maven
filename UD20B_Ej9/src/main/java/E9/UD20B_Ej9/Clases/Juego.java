@@ -160,6 +160,16 @@ public class Juego extends JFrame {
 					botones[15].setIcon(imagenes.get(aNum.get(15)));
 				}
 				
+				if((giradas()) && (!comparar())) {
+					
+					for(int j=0;j<16;j++) {
+						
+						botones[i].setIcon(imgNada_2);
+						
+					}
+					
+				}
+				
             }
 		}
 
@@ -185,7 +195,46 @@ public class Juego extends JFrame {
 		
 	}
     
+    public boolean comparar() {
+    	
+    	boolean res = false;
+    	
+    	for(int i=0;i<16;i++) {
+    		for(int j=0;j<16;j++) {
+	    		if((botones[i].getIcon().equals(botones[j].getIcon())) && (!botones[i].getIcon().equals(imgNada_2))) {
+	    			res = true;
+	    		}
+    		}
+    	}
+    	
+    	System.out.println("comparar: "+res);
+    	
+    	return res;
+    	
+    }
     
+    public boolean giradas() {
+    	
+    	boolean res = false;
+    	int cont = 0;
+    	
+    	for(int i=0;i<16;i++) {
+    		
+    		if(!botones[i].getIcon().equals(imgNada_2)) {
+    			cont++;
+    		}
+    		
+    	}
+    	
+    	if(cont >= 2) {
+    		res = true;
+    	}
+    	
+    	System.out.println(res);
+    	
+    	return res;
+    	
+    }
     
     public ArrayList<Integer> AleatorioNoRepetido(int lo, ArrayList<Integer> aNum){
     	
