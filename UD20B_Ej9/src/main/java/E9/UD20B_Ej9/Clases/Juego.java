@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 /**
  * 
  * @author Eloy, Jordi, Miquel Angel
@@ -16,13 +17,67 @@ public class Juego extends JFrame {
     private static final long serialVersionUID = 1L;
     //Creamos las variables
     private JPanel panel;
-    private int num=16;
+    //private int num=16;
     private JButton[] botones = new JButton[16];
-    private char[] letras = {'A','A','B','B','C','C','D','D','E','E','F','F','G','G','H','H'};
-
+    
+    private ArrayList<ImageIcon> imagenes = new ArrayList<ImageIcon>();
+    //Creacion de imagenes
+    Image img1 = new ImageIcon("imagenes/Java.jpg").getImage();
+    ImageIcon img1_2 = new ImageIcon(img1.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img2 = new ImageIcon("imagenes/Angular.jpg").getImage();
+    ImageIcon img2_2 = new ImageIcon(img2.getScaledInstance(300, 240, Image.SCALE_SMOOTH));
+    
+    Image img3 = new ImageIcon("imagenes/cplusplus.jpg").getImage();
+    ImageIcon img3_2 = new ImageIcon(img3.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img4 = new ImageIcon("imagenes/css.png").getImage();
+    ImageIcon img4_2 = new ImageIcon(img4.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img5 = new ImageIcon("imagenes/JavaScript-logo.jpg").getImage();
+    ImageIcon img5_2 = new ImageIcon(img5.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img6 = new ImageIcon("imagenes/Mysql.jpg").getImage();
+    ImageIcon img6_2 = new ImageIcon(img6.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img7 = new ImageIcon("imagenes/python.png").getImage();
+    ImageIcon img7_2 = new ImageIcon(img7.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img8 = new ImageIcon("imagenes/cobol.png").getImage();
+    ImageIcon img8_2 = new ImageIcon(img8.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img9 = new ImageIcon("imagenes/Java.jpg").getImage();
+    ImageIcon img9_2 = new ImageIcon(img1.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img10 = new ImageIcon("imagenes/Angular.jpg").getImage();
+    ImageIcon img10_2 = new ImageIcon(img2.getScaledInstance(300, 240, Image.SCALE_SMOOTH));
+    
+    Image img11 = new ImageIcon("imagenes/cplusplus.jpg").getImage();
+    ImageIcon img11_2 = new ImageIcon(img3.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img12 = new ImageIcon("imagenes/css.png").getImage();
+    ImageIcon img12_2 = new ImageIcon(img4.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img13 = new ImageIcon("imagenes/JavaScript-logo.jpg").getImage();
+    ImageIcon img13_2 = new ImageIcon(img5.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img14 = new ImageIcon("imagenes/Mysql.jpg").getImage();
+    ImageIcon img14_2 = new ImageIcon(img6.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img15 = new ImageIcon("imagenes/python.png").getImage();
+    ImageIcon img15_2 = new ImageIcon(img7.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
+    Image img16 = new ImageIcon("imagenes/cobol.png").getImage();
+    ImageIcon img16_2 = new ImageIcon(img8.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
+    
     
     
     public Juego() {
+    	//Añadimos las imagenes que hemos agregado al programa al array de imagenes
+    	imagenes.add(img1_2);imagenes.add(img2_2);imagenes.add(img3_2);imagenes.add(img4_2);
+    	imagenes.add(img5_2);imagenes.add(img6_2);imagenes.add(img7_2);imagenes.add(img8_2);
+    	imagenes.add(img9_2);imagenes.add(img10_2);imagenes.add(img11_2);imagenes.add(img12_2);
+    	imagenes.add(img13_2);imagenes.add(img14_2);imagenes.add(img15_2);imagenes.add(img16_2);
         //Creamos el panel
         setTitle("Ejercicio9");
         setBounds(500, 10, 1000, 1000);
@@ -38,6 +93,7 @@ public class Juego extends JFrame {
         panel.setBackground(Color.blue);
         //Creamos el grid
         panel.setLayout(new GridLayout (4,4, 2,2));
+        //Metodo para generar los botones random
         NumRand();
 
 
@@ -49,6 +105,8 @@ public class Juego extends JFrame {
         }
         
     }
+    
+    
     
     public ArrayList<Integer> AleatorioNoRepetido(int lo, ArrayList<Integer> aNum){
     	
@@ -84,7 +142,7 @@ public class Juego extends JFrame {
         
             for(int i=0;i<16;i++) {
             	numString=String.valueOf(aNum.get(i));
-                botones[i]=new JButton(""+letras[aNum.get(i)]);
+                botones[i]=new JButton(imagenes.get(aNum.get(i)));
                 panel.add(botones[i]);
                 
             }
