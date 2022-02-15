@@ -25,7 +25,7 @@ public class Juego extends JFrame {
     public Juego() {
         //Creamos el panel
         setTitle("Ejercicio9");
-        setBounds(600, 500, 400, 300);
+        setBounds(500, 10, 1000, 1000);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         
