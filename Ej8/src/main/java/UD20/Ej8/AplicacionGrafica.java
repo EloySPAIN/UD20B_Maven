@@ -79,7 +79,7 @@ public class AplicacionGrafica extends JFrame {
 				
 				resultado.setText("0.0");
 				
-				
+				texto1.setText("");
 			}
 		});
 		
@@ -99,7 +99,7 @@ public class AplicacionGrafica extends JFrame {
 					}		
 					
 				}catch(NumberFormatException error){
-					System.out.println("No se ha introducido un número");
+					JOptionPane.showMessageDialog(null, "No se ha reconocido el nùmero introducido");
 				}		
 			}
 		});
