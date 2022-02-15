@@ -20,6 +20,7 @@ public class Juego extends JFrame {
     private ArrayList < Integer > aNum = new ArrayList<Integer>();
     private ArrayList<ImageIcon> imagenes = new ArrayList<ImageIcon>();
     private ArrayList<ImageIcon> imgnada = new ArrayList<ImageIcon>();
+    private ArrayList<JButton> guardar = new ArrayList<JButton>();
     private int contGlobal = 0;
     //Creacion de imagenes
     Image imgNada = new ImageIcon("imagenes/nada.png").getImage();
@@ -115,12 +116,12 @@ public class Juego extends JFrame {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			for(int i=0;i<16;i++) {
-				if(contGlobal==1) {
+				if(contGlobal==2) {
 					if(e.getSource()!=botones[i].getIcon()) {
 						botones[i].setIcon(imgnada.get(aNum.get(i)));
 						contGlobal=0;
 					}
-				}else if(contGlobal!=1) {
+				}else if(contGlobal!=2) {
 					if(e.getSource()==botones[0]) {
 						botones[0].setIcon(imagenes.get(aNum.get(0)));
 						contGlobal++;
