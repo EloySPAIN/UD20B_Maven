@@ -101,14 +101,66 @@ public class Juego extends JFrame {
         panel.setLayout(new GridLayout (4,4, 2,2));
         //Metodo para generar los botones random
         NumRand();
-
+        for (int i = 0; i < 16 ; i++) {
+        	botones[i].addMouseListener(new Resultado());
+        }
 
     }
     //Creamos el evento del boton
     public class Resultado implements MouseListener {
 		@Override
 		public void mouseClicked(MouseEvent e) {
-
+			for(int i=0;i<16;i++) {
+				if(e.getSource()==botones[0]) {
+					botones[0].setIcon(imagenes.get(aNum.get(0)));
+				}
+				if(e.getSource()==botones[1]) {
+					botones[1].setIcon(imagenes.get(aNum.get(1)));
+				}
+				if(e.getSource()==botones[2]) {
+					botones[2].setIcon(imagenes.get(aNum.get(2)));
+				}
+				if(e.getSource()==botones[3]) {
+					botones[3].setIcon(imagenes.get(aNum.get(3)));
+				}
+				if(e.getSource()==botones[4]) {
+					botones[4].setIcon(imagenes.get(aNum.get(4)));
+				}
+				if(e.getSource()==botones[5]) {
+					botones[5].setIcon(imagenes.get(aNum.get(5)));
+				}
+				if(e.getSource()==botones[6]) {
+					botones[6].setIcon(imagenes.get(aNum.get(6)));
+				}
+				if(e.getSource()==botones[7]) {
+					botones[7].setIcon(imagenes.get(aNum.get(7)));
+				}
+				if(e.getSource()==botones[8]) {
+					botones[8].setIcon(imagenes.get(aNum.get(8)));
+				}
+				if(e.getSource()==botones[9]) {
+					botones[9].setIcon(imagenes.get(aNum.get(9)));
+				}
+				if(e.getSource()==botones[10]) {
+					botones[10].setIcon(imagenes.get(aNum.get(10)));
+				}
+				if(e.getSource()==botones[11]) {
+					botones[11].setIcon(imagenes.get(aNum.get(11)));
+				}
+				if(e.getSource()==botones[12]) {
+					botones[12].setIcon(imagenes.get(aNum.get(12)));
+				}
+				if(e.getSource()==botones[13]) {
+					botones[13].setIcon(imagenes.get(aNum.get(13)));
+				}
+				if(e.getSource()==botones[14]) {
+					botones[14].setIcon(imagenes.get(aNum.get(14)));
+				}
+				if(e.getSource()==botones[15]) {
+					botones[15].setIcon(imagenes.get(aNum.get(15)));
+				}
+				
+            }
 		}
 
 		public void mousePressed(MouseEvent e) {
@@ -173,9 +225,7 @@ public class Juego extends JFrame {
                 
             }
             
-            for(int i=0;i<16;i++) {
-            	//botones[i].setIcon(imagenes.get(aNum.get(i)));  
-            }
+            
     }
     
     
