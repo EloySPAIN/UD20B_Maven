@@ -2,6 +2,7 @@ package E9.UD20B_Ej9.Clases;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -12,69 +13,85 @@ import java.awt.GridLayout;
  *
  */
 public class Juego extends JFrame {
-	private static final long serialVersionUID = 1L;
-	//Creamos las variables
-	private JPanel panel;
-	JButton b1 = new JButton("a");
-	JButton b2 = new JButton("a");
-	JButton b3 = new JButton("a");
-	JButton b4 = new JButton("a");
-	JButton b5 = new JButton("a");
-	JButton b6 = new JButton("a");
-	JButton b7 = new JButton("a");
-	JButton b8 = new JButton("a");
-	JButton b9 = new JButton("a");
-	JButton b10 = new JButton("a");
-	JButton b11 = new JButton("a");
-	JButton b12 = new JButton("a");
-	JButton b13 = new JButton("a");
-	JButton b14 = new JButton("a");
-	JButton b15 = new JButton("a");
-	JButton b16 = new JButton("a");
-	
-	public Juego() {
-		//Creamos el panel
-		setTitle("Ejercicio9");
-		setBounds(600, 500, 400, 300);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
-		
-		//Creamos el panel, el texto y el label
-		panel = new JPanel();
-		//Indicamos el diseño del panel
-		panel.setLayout(null);
-		setContentPane(panel);
-		this.getContentPane().setBackground(Color.blue);
-		panel.setBackground(Color.blue);
-		//Creamos el grid
-		panel.setLayout(new GridLayout (4,4, 2,2));
+    private static final long serialVersionUID = 1L;
+    //Creamos las variables
+    private JPanel panel;
+    private int num=16;
+    private JButton[] botones = new JButton[16];
+    private char[] letras = {'A','A','B','B','C','C','D','D','E','E','F','F','G','G','H','H'};
 
-		//Lo añadimos al panel
-		panel.add(b1);
-		b1.setBackground(Color.getHSBColor(187, 80, 60));
-		panel.add(b2);
-		panel.add(b3);
-		panel.add(b4);
-		panel.add(b5);
-		panel.add(b6);
-		panel.add(b7);
-		panel.add(b8);
-		panel.add(b9);
-		panel.add(b10);
-		panel.add(b11);
-		panel.add(b12);
-		panel.add(b13);
-		panel.add(b14);
-		panel.add(b15);
-		panel.add(b16);
+    
+    
+    public Juego() {
+        //Creamos el panel
+        setTitle("Ejercicio9");
+        setBounds(600, 500, 400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        
+        //Creamos el panel, el texto y el label
+        panel = new JPanel();
+        //Indicamos el diseño del panel
+        panel.setLayout(null);
+        setContentPane(panel);
+        this.getContentPane().setBackground(Color.blue);
+        panel.setBackground(Color.blue);
+        //Creamos el grid
+        panel.setLayout(new GridLayout (4,4, 2,2));
+        int num;
+        String hola;
+        int cont = 0;
+        
+        ArrayList < Integer > aNum = new ArrayList<Integer>();
+
+        AleatorioNoRepetido(16, aNum);
+        
+            for(int i=0;i<16;i++) {
+                hola=String.valueOf(aNum.get(i));
+                botones[i]=new JButton(""+letras[aNum.get(i)]);
+                if(!hola.equals(botones[i])) {
+                    cont--;
+                    botones[i]=new JButton(""+letras[aNum.get(i)]);
+                    panel.add(botones[i]);
+                }else {
+                    cont++;
+                    
+                }
+            }
 
 
-	}
-	//Creamos el evento del boton
-	public class Resultado implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
+    }
+    //Creamos el evento del boton
+    public class Resultado implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
 
-		}
-		
-	}
+        }
+        
+    }
+    
+    public ArrayList<Integer> AleatorioNoRepetido(int lo, ArrayList<Integer> aNum){
+    	
+    	int pos;
+    	
+    	
+        for (int i = 0; i < 16 ; i++) {
+          pos = (int) Math.floor(Math.random() * lo );
+          while (aNum.contains(pos)) {
+            pos = (int) Math.floor(Math.random() * lo );
+          }
+          aNum.add(pos);
+        }
+    
+
+        
+        for (int i = 0; i < 16 ; i++) {
+        	
+        	System.out.println(aNum.get(i));
+        	
+        }
+        
+        return aNum;
+    	
+    }
+    
 }
