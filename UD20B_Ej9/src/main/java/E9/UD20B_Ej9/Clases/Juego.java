@@ -20,6 +20,7 @@ public class Juego extends JFrame {
     private ArrayList < Integer > aNum = new ArrayList<Integer>();
     private ArrayList<ImageIcon> imagenes = new ArrayList<ImageIcon>();
     private ArrayList<ImageIcon> imgnada = new ArrayList<ImageIcon>();
+    private int contGlobal = 0;
     //Creacion de imagenes
     Image imgNada = new ImageIcon("imagenes/nada.png").getImage();
     ImageIcon imgNada_2 = new ImageIcon(imgNada.getScaledInstance(240, 240, Image.SCALE_SMOOTH));
@@ -102,75 +103,91 @@ public class Juego extends JFrame {
         //Metodo para generar los botones random
         NumRand();
         for (int i = 0; i < 16 ; i++) {
-        	botones[i].addMouseListener(new Resultado());
+        	
+	        	botones[i].addMouseListener(new Resultado());
+			
         }
-
     }
+    
+
     //Creamos el evento del boton
     public class Resultado implements MouseListener {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			for(int i=0;i<16;i++) {
-				if(e.getSource()==botones[0]) {
-					botones[0].setIcon(imagenes.get(aNum.get(0)));
-				}
-				if(e.getSource()==botones[1]) {
-					botones[1].setIcon(imagenes.get(aNum.get(1)));
-				}
-				if(e.getSource()==botones[2]) {
-					botones[2].setIcon(imagenes.get(aNum.get(2)));
-				}
-				if(e.getSource()==botones[3]) {
-					botones[3].setIcon(imagenes.get(aNum.get(3)));
-				}
-				if(e.getSource()==botones[4]) {
-					botones[4].setIcon(imagenes.get(aNum.get(4)));
-				}
-				if(e.getSource()==botones[5]) {
-					botones[5].setIcon(imagenes.get(aNum.get(5)));
-				}
-				if(e.getSource()==botones[6]) {
-					botones[6].setIcon(imagenes.get(aNum.get(6)));
-				}
-				if(e.getSource()==botones[7]) {
-					botones[7].setIcon(imagenes.get(aNum.get(7)));
-				}
-				if(e.getSource()==botones[8]) {
-					botones[8].setIcon(imagenes.get(aNum.get(8)));
-				}
-				if(e.getSource()==botones[9]) {
-					botones[9].setIcon(imagenes.get(aNum.get(9)));
-				}
-				if(e.getSource()==botones[10]) {
-					botones[10].setIcon(imagenes.get(aNum.get(10)));
-				}
-				if(e.getSource()==botones[11]) {
-					botones[11].setIcon(imagenes.get(aNum.get(11)));
-				}
-				if(e.getSource()==botones[12]) {
-					botones[12].setIcon(imagenes.get(aNum.get(12)));
-				}
-				if(e.getSource()==botones[13]) {
-					botones[13].setIcon(imagenes.get(aNum.get(13)));
-				}
-				if(e.getSource()==botones[14]) {
-					botones[14].setIcon(imagenes.get(aNum.get(14)));
-				}
-				if(e.getSource()==botones[15]) {
-					botones[15].setIcon(imagenes.get(aNum.get(15)));
-				}
-				
-				if((giradas()) && (!comparar())) {
-					
-					for(int j=0;j<16;j++) {
-						
-						botones[i].setIcon(imgNada_2);
-						
+				if(contGlobal==1) {
+					if(e.getSource()!=botones[i].getIcon()) {
+						botones[i].setIcon(imgnada.get(aNum.get(i)));
+						contGlobal=0;
 					}
-					
+				}else if(contGlobal!=1) {
+					if(e.getSource()==botones[0]) {
+						botones[0].setIcon(imagenes.get(aNum.get(0)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[1]) {
+						botones[1].setIcon(imagenes.get(aNum.get(1)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[2]) {
+						botones[2].setIcon(imagenes.get(aNum.get(2)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[3]) {
+						botones[3].setIcon(imagenes.get(aNum.get(3)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[4]) {
+						botones[4].setIcon(imagenes.get(aNum.get(4)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[5]) {
+						botones[5].setIcon(imagenes.get(aNum.get(5)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[6]) {
+						botones[6].setIcon(imagenes.get(aNum.get(6)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[7]) {
+						botones[7].setIcon(imagenes.get(aNum.get(7)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[8]) {
+						botones[8].setIcon(imagenes.get(aNum.get(8)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[9]) {
+						botones[9].setIcon(imagenes.get(aNum.get(9)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[10]) {
+						botones[10].setIcon(imagenes.get(aNum.get(10)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[11]) {
+						botones[11].setIcon(imagenes.get(aNum.get(11)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[12]) {
+						botones[12].setIcon(imagenes.get(aNum.get(12)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[13]) {
+						botones[13].setIcon(imagenes.get(aNum.get(13)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[14]) {
+						botones[14].setIcon(imagenes.get(aNum.get(14)));
+						contGlobal++;
+					}
+					if(e.getSource()==botones[15]) {
+						botones[15].setIcon(imagenes.get(aNum.get(15)));
+						contGlobal++;
+					}
 				}
-				
-            }
+			}
+					
 		}
 
 		public void mousePressed(MouseEvent e) {
@@ -195,46 +212,7 @@ public class Juego extends JFrame {
 		
 	}
     
-    public boolean comparar() {
-    	
-    	boolean res = false;
-    	
-    	for(int i=0;i<16;i++) {
-    		for(int j=0;j<16;j++) {
-	    		if((botones[i].getIcon().equals(botones[j].getIcon())) && (!botones[i].getIcon().equals(imgNada_2))) {
-	    			res = true;
-	    		}
-    		}
-    	}
-    	
-    	System.out.println("comparar: "+res);
-    	
-    	return res;
-    	
-    }
     
-    public boolean giradas() {
-    	
-    	boolean res = false;
-    	int cont = 0;
-    	
-    	for(int i=0;i<16;i++) {
-    		
-    		if(!botones[i].getIcon().equals(imgNada_2)) {
-    			cont++;
-    		}
-    		
-    	}
-    	
-    	if(cont >= 2) {
-    		res = true;
-    	}
-    	
-    	System.out.println(res);
-    	
-    	return res;
-    	
-    }
     
     public ArrayList<Integer> AleatorioNoRepetido(int lo, ArrayList<Integer> aNum){
     	
