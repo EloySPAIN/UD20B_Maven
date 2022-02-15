@@ -85,7 +85,6 @@ public class Juego extends JFrame {
 
         
         for (int i = 0; i < 16 ; i++) {
-        	
         	System.out.println(aNum.get(i));
         	
         }
